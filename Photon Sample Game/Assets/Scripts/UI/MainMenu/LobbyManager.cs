@@ -26,9 +26,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public override void OnConnectedToMaster()
     {
-        RoomOptions options = new RoomOptions();
-
-        
+        PhotonNetwork.JoinLobby();
     }
 
 }
