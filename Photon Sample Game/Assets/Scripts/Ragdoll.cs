@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Ragdoll : MonoBehaviour
 {
+    [SerializeField] private Animator animator;
     [SerializeField] private Rigidbody[] _rbs;
+
+    [SerializeField] private bool _SetRagdoll;
 
     private void Awake()
     {
@@ -15,6 +18,9 @@ public class Ragdoll : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A))
             SetRagdoll = true;
+
+        SetRagdoll = _SetRagdoll;
+
     }
 
     public bool SetRagdoll
@@ -22,6 +28,8 @@ public class Ragdoll : MonoBehaviour
         set
         {
             var toConstrains = value ? RigidbodyConstraints.None : RigidbodyConstraints.FreezeAll;
+
+            animator.enabled = !value;
 
             foreach (var item in _rbs)
             {

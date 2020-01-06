@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private Transform _cameraAnchor;
 
+    private CharacterController _controller;
     private Animator _anim;
 
     private void Awake()
@@ -21,9 +23,25 @@ public class PlayerController : MonoBehaviour
         Rotate();
     }
 
+    private void OnAnimatorIK(int layerIndex)
+    {
+        Debug.Log(_anim.GetIKPosition(AvatarIKGoal.LeftFoot));
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("coolide!");
+    }
+
+
     private void Move()
     {
         float power = .5f;
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            _anim.Play("Grenade", 1);
+        }
 
         if (Input.GetKey(KeyCode.LeftShift))
             power = 1;
