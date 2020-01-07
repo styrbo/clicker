@@ -56,4 +56,10 @@ public class PlayerController : MonoBehaviour
         transform.eulerAngles = curEuler;
         _cameraAnchor.localEulerAngles = camEuler;
     }
+
+
+    SpriteRenderer sprite;
+    bool whenlook;
+    void flip() => sprite.flipX = whenlook;
+
 }
