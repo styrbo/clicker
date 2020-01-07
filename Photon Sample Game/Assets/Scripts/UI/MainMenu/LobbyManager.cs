@@ -16,6 +16,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public void Connect()
     {
+        PhotonNetwork.AutomaticallySyncScene = true;
         PhotonNetwork.ConnectUsingSettings();
     }
 
@@ -27,6 +28,11 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public override void OnConnectedToMaster()
     {
         PhotonNetwork.JoinLobby();
+    }
+
+    public void JoinToRandomRoom()
+    {
+        PhotonNetwork.JoinRandomRoom();
     }
 
 }

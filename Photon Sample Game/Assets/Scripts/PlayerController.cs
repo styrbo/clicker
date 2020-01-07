@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -9,14 +10,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform _cameraAnchor;
 
     private Animator _anim;
+    private PhotonView _view;
 
     private void Awake()
     {
         _anim = GetComponent<Animator>();
+        _view = GetComponent<PhotonView>();
     }
 
     private void Update()
     {
+        if (_view.IsMine == false)
+            return;
+
         Move();
         Rotate();
     }
