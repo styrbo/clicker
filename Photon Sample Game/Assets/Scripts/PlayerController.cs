@@ -34,13 +34,13 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift))
             power = 1;
 
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W))
             _anim.SetFloat("Vertical", power);
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.D))
             _anim.SetFloat("Horizontal", power);
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S))
             _anim.SetFloat("Vertical", -power);
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A))
             _anim.SetFloat("Horizontal", -power);
 
         if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.S))
